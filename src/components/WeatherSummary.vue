@@ -1,14 +1,24 @@
-<script setup></script>
+<script setup>
+import { capitalizeFirstLetter } from '../utils/index'
+const props = defineProps({
+  weatherInfo: {
+    type: [Object, null],
+    required: true
+  }
+})
+</script>
 
 <template>
-  <div class="summary">
+  <div class="summary" v-if="weatherInfo?.weather">
     <div
-      style="background-image: url('/src/assets/img/weather-main/thunderstorm.png')"
+      :style="`background-image: url('/src/assets/img/weather-main/${weatherInfo?.weather[0].description}.png')`"
       class="pic-main"
     ></div>
     <div class="weather">
-      <div class="temp">14 °C</div>
-      <div class="weather-desc text-block">Thunderstorm</div>
+      <div class="temp">{{ Math.round(weatherInfo?.main?.temp) }} °C</div>
+      <div class="weather-desc text-block">
+        {{ capitalizeFirstLetter(weatherInfo?.weather[0].description) }}
+      </div>
     </div>
     <div class="city text-block">Paris, FR</div>
     <div class="date text-block">Thu, March 16, 2023</div>
