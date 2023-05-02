@@ -1,5 +1,20 @@
 <script setup>
 import { capitalizeFirstLetter } from '../utils/index'
+// interface IcityInfo {
+//   coord: object
+//   weather: Array<object>
+//   base: string
+//   main: object
+//   visibility: number
+//   wind: object
+//   clouds: object
+//   dt: number
+//   sys: object
+//   timezone: number
+//   id: number
+//   name: string
+//   cod: number
+// }
 const props = defineProps({
   weatherInfo: {
     type: [Object, null],
@@ -30,7 +45,7 @@ const today = new Date().toLocaleString('en-En', {
       {{ capitalizeFirstLetter(weatherInfo?.name) }},
       {{ weatherInfo?.sys?.country }}
     </div>
-    <div class="date text-block">{{today}}</div>
+    <div class="date text-block">{{ today }}</div>
   </div>
 </template>
 
