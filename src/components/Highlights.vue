@@ -4,7 +4,7 @@ import { getPressureMm, getTime } from '../utils/index'
 const props = defineProps({
   weatherInfo: { type: [Object, null], required: true }
 })
-const timezone = computed(() => props?.weatherInfo.timezone)
+const timezone = computed(() => props?.weatherInfo?.timezone)
 const sunriseTime = computed(() => {
   return getTime(props.weatherInfo?.sys?.sunrise + timezone.value)
 })
@@ -13,7 +13,7 @@ const sunsetTime = computed(() => {
 })
 </script>
 <template>
-  <div v-if="weatherInfo?.weather" class="section highlights">
+  <div class="section highlights">
     <div class="title">Today's Highlights</div>
     <div class="highlights-wrapper">
       <div class="highlight">
